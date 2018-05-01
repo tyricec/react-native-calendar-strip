@@ -73,7 +73,8 @@ class CalendarStrip extends Component {
     styleWeekend: PropTypes.bool,
 
     locale: PropTypes.object,
-    shouldAllowFontScaling: PropTypes.bool
+    shouldAllowFontScaling: PropTypes.bool,
+    onDateLongPress: PropTypes.func,
   };
 
   static defaultProps = {
@@ -92,7 +93,8 @@ class CalendarStrip extends Component {
     innerStyle: { flex: 1 },
     maxDayComponentSize: 80,
     minDayComponentSize: 10,
-    shouldAllowFontScaling: true
+    shouldAllowFontScaling: true,
+    onDateLongPress: () => {},
   };
 
   constructor(props) {
@@ -530,6 +532,7 @@ class CalendarStrip extends Component {
           showDayName={this.props.showDayName}
           showDayNumber={this.props.showDayNumber}
           onDateSelected={() => enabled && this.onDateSelected(datesForWeek[i])}
+          onDateLongPress={() => enabled && this.props.onDateLongPress(datesForWeek[i])}
           calendarColor={this.props.calendarColor}
           dateNameStyle={this.props.dateNameStyle}
           dateNumberStyle={this.props.dateNumberStyle}
